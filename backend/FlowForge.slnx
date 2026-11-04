@@ -1,0 +1,23 @@
+<Solution>
+    <Configurations>
+        <Platform Name="Any CPU" />
+    </Configurations>
+    <Folder Name="/src/">
+        <Project Path="src/FlowForge.Domain/FlowForge.Domain.csproj" />
+        <Project Path="src/FlowForge.Application/FlowForge.Application.csproj" />
+        <Project Path="src/FlowForge.EntityFrameworkCore/FlowForge.EntityFrameworkCore.csproj" />
+        <Project Path="src/FlowForge.Domain.Shared/FlowForge.Domain.Shared.csproj" />
+        <Project Path="src/FlowForge.Application.Contracts/FlowForge.Application.Contracts.csproj" />
+        <Project Path="src/FlowForge.HttpApi/FlowForge.HttpApi.csproj" />
+        <Project Path="src/FlowForge.HttpApi.Client/FlowForge.HttpApi.Client.csproj" />
+        <Project Path="src/FlowForge.HttpApi.Host/FlowForge.HttpApi.Host.csproj" />
+        <Project Path="src/FlowForge.DbMigrator/FlowForge.DbMigrator.csproj" />
+    </Folder>
+    <Folder Name="/test/">
+        <Project Path="test/FlowForge.Application.Tests/FlowForge.Application.Tests.csproj" />
+        <Project Path="test/FlowForge.EntityFrameworkCore.Tests/FlowForge.EntityFrameworkCore.Tests.csproj" />
+        <Project Path="test/FlowForge.TestBase/FlowForge.TestBase.csproj" />
+        <Project Path="test/FlowForge.Domain.Tests/FlowForge.Domain.Tests.csproj" />
+        <Project Path="test/FlowForge.HttpApi.Client.ConsoleTestApp/FlowForge.HttpApi.Client.ConsoleTestApp.csproj" />
+    </Folder>
+</Solution>

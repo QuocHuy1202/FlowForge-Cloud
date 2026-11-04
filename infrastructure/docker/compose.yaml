@@ -1,0 +1,26 @@
+services:
+  postgres:
+    image: postgres:17
+    container_name: flowforge-postgres
+    restart: unless-stopped
+
+    environment:
+      POSTGRES_DB: FlowForge
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env}
+
+    ports:
+      - "127.0.0.1:5434:5432"
+
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U root -d FlowForge"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  postgres_data:
+

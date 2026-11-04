@@ -1,0 +1,22 @@
+infrastructure/docker/.env
+
+# Local secrets
+**/.env
+**/.env.*
+!**/.env.example
+**/appsettings.Development.json
+**/appsettings.*.local.json
+**/secrets.json
+
+# Certificates and private keys
+**/*.pfx
+**/*.p12
+**/*.key
+
+# Generated files
+**/node_modules/
+**/bin/
+**/obj/
+**/.angular/
+**/dist/
+**/Logs/

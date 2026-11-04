@@ -1,0 +1,114 @@
+{
+  "template": "app",
+  "imports": {
+    "Volo.Abp.LeptonXLiteTheme": {
+      "version": "5.7.0",
+      "isInstalled": true,
+      "creationTime": "11/04/2026 06:58:13 +00:00"
+    },
+    "Volo.Abp.Account": {
+      "version": "10.7.0",
+      "isInstalled": true,
+      "creationTime": "11/04/2026 06:58:13 +00:00"
+    },
+    "Volo.Abp.OpenIddict": {
+      "version": "10.7.0",
+      "isInstalled": true,
+      "creationTime": "11/04/2026 06:58:13 +00:00"
+    },
+    "Volo.Abp.Identity": {
+      "version": "10.7.0",
+      "isInstalled": true,
+      "creationTime": "11/04/2026 06:58:13 +00:00"
+    },
+    "Volo.Abp.TenantManagement": {
+      "version": "10.7.0",
+      "isInstalled": true,
+      "creationTime": "11/04/2026 06:58:13 +00:00"
+    },
+    "Volo.Abp.SettingManagement": {
+      "version": "10.7.0",
+      "isInstalled": true,
+      "creationTime": "11/04/2026 06:58:13 +00:00"
+    },
+    "Volo.Abp.PermissionManagement": {
+      "version": "10.7.0",
+      "isInstalled": true,
+      "creationTime": "11/04/2026 06:58:13 +00:00"
+    },
+    "Volo.Abp.FeatureManagement": {
+      "version": "10.7.0",
+      "isInstalled": true,
+      "creationTime": "11/04/2026 06:58:13 +00:00"
+    },
+    "Volo.Abp.BlobStoring.Database": {
+      "version": "10.7.0",
+      "isInstalled": true,
+      "creationTime": "11/04/2026 06:58:13 +00:00"
+    }
+  },
+  "folders": {
+    "items": {
+      "src": {},
+      "test": {}
+    }
+  },
+  "packages": {
+    "FlowForge.Application": {
+      "path": "src/FlowForge.Application/FlowForge.Application.abppkg",
+      "folder": "src"
+    },
+    "FlowForge.Application.Tests": {
+      "path": "test/FlowForge.Application.Tests/FlowForge.Application.Tests.abppkg",
+      "folder": "test"
+    },
+    "FlowForge.Domain.Shared": {
+      "path": "src/FlowForge.Domain.Shared/FlowForge.Domain.Shared.abppkg",
+      "folder": "src"
+    },
+    "FlowForge.Application.Contracts": {
+      "path": "src/FlowForge.Application.Contracts/FlowForge.Application.Contracts.abppkg",
+      "folder": "src"
+    },
+    "FlowForge.HttpApi": {
+      "path": "src/FlowForge.HttpApi/FlowForge.HttpApi.abppkg",
+      "folder": "src"
+    },
+    "FlowForge.HttpApi.Client": {
+      "path": "src/FlowForge.HttpApi.Client/FlowForge.HttpApi.Client.abppkg",
+      "folder": "src"
+    },
+    "FlowForge.EntityFrameworkCore.Tests": {
+      "path": "test/FlowForge.EntityFrameworkCore.Tests/FlowForge.EntityFrameworkCore.Tests.abppkg",
+      "folder": "test"
+    },
+    "FlowForge.EntityFrameworkCore": {
+      "path": "src/FlowForge.EntityFrameworkCore/FlowForge.EntityFrameworkCore.abppkg",
+      "folder": "src"
+    },
+    "FlowForge.TestBase": {
+      "path": "test/FlowForge.TestBase/FlowForge.TestBase.abppkg",
+      "folder": "test"
+    },
+    "FlowForge.Domain.Tests": {
+      "path": "test/FlowForge.Domain.Tests/FlowForge.Domain.Tests.abppkg",
+      "folder": "test"
+    },
+    "FlowForge.HttpApi.Client.ConsoleTestApp": {
+      "path": "test/FlowForge.HttpApi.Client.ConsoleTestApp/FlowForge.HttpApi.Client.ConsoleTestApp.abppkg",
+      "folder": "test"
+    },
+    "FlowForge.DbMigrator": {
+      "path": "src/FlowForge.DbMigrator/FlowForge.DbMigrator.abppkg",
+      "folder": "src"
+    },
+    "FlowForge.HttpApi.Host": {
+      "path": "src/FlowForge.HttpApi.Host/FlowForge.HttpApi.Host.abppkg",
+      "folder": "src"
+    },
+    "FlowForge.Domain": {
+      "path": "src/FlowForge.Domain/FlowForge.Domain.abppkg",
+      "folder": "src"
+    }
+  }
+}
