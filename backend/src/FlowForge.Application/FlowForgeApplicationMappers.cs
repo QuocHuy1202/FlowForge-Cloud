@@ -3,13 +3,7 @@ using Volo.Abp.Mapperly;
 
 namespace FlowForge;
 
-/*
- * You can add your own mappings here.
- * [Mapper(RequiredMappingStrategy = RequiredMappingStrategy.Target)]
- * public partial class FlowForgeApplicationMappers : MapperBase<BookDto, CreateUpdateBookDto>
- * {
- *    public override partial CreateUpdateBookDto Map(BookDto source);
- *
- *    public override partial void Map(BookDto source, CreateUpdateBookDto destination);
- * }
- */
+// Add Mapperly mappers here as you create domain entities and DTOs.
+// Example:
+// [Mapper(RequiredMappingStrategy = RequiredMappingStrategy.Target)]
+// public partial class MyEntityMapper : MapperBase<MyEntityDto, CreateUpdateMyEntityDto> { ... }

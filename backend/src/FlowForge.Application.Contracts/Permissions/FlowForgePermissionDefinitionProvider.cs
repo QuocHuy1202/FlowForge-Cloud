@@ -1,7 +1,6 @@
 using FlowForge.Localization;
 using Volo.Abp.Authorization.Permissions;
 using Volo.Abp.Localization;
-using Volo.Abp.MultiTenancy;
 
 namespace FlowForge.Permissions;
 
@@ -11,8 +10,7 @@ public class FlowForgePermissionDefinitionProvider : PermissionDefinitionProvide
     {
         var myGroup = context.AddGroup(FlowForgePermissions.GroupName);
 
-        //Define your own permissions here. Example:
-        //myGroup.AddPermission(FlowForgePermissions.MyPermission1, L("Permission:MyPermission1"));
+        // Define permissions here as features are added.
     }
 
     private static LocalizableString L(string name)
