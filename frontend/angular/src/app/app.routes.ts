@@ -1,5 +1,6 @@
-import { authGuard, permissionGuard } from '@abp/ng.core';
+import { permissionGuard } from '@abp/ng.core';
 import { Routes } from '@angular/router';
+import { bffAuthGuard } from './core/auth/bff-auth.guard';
 
 const loadPlaceholder = () =>
   import('./shared/pages/feature-placeholder/feature-placeholder.component')
@@ -15,7 +16,7 @@ export const APP_ROUTES: Routes = [
   },
   {
     path: 'dashboard',
-    canActivate: [authGuard],
+    canActivate: [bffAuthGuard],
     loadComponent: () =>
       import('./home/home.component')
         .then(c => c.HomeComponent),
@@ -50,7 +51,7 @@ export const APP_ROUTES: Routes = [
   },
   {
     path: 'workflows',
-    canActivate: [authGuard],
+    canActivate: [bffAuthGuard],
     loadComponent: loadPlaceholder,
     data: {
       title: 'Workflows',
@@ -59,7 +60,7 @@ export const APP_ROUTES: Routes = [
   },
   {
     path: 'executions',
-    canActivate: [authGuard],
+    canActivate: [bffAuthGuard],
     loadComponent: loadPlaceholder,
     data: {
       title: 'Executions',
@@ -68,7 +69,7 @@ export const APP_ROUTES: Routes = [
   },
   {
     path: 'tasks',
-    canActivate: [authGuard],
+    canActivate: [bffAuthGuard],
     loadComponent: loadPlaceholder,
     data: {
       title: 'My Tasks',
@@ -77,7 +78,7 @@ export const APP_ROUTES: Routes = [
   },
   {
     path: 'approvals',
-    canActivate: [authGuard],
+    canActivate: [bffAuthGuard],
     loadComponent: loadPlaceholder,
     data: {
       title: 'Approvals',
@@ -86,7 +87,7 @@ export const APP_ROUTES: Routes = [
   },
   {
     path: 'schedules',
-    canActivate: [authGuard],
+    canActivate: [bffAuthGuard],
     loadComponent: loadPlaceholder,
     data: {
       title: 'Schedules',
@@ -95,7 +96,7 @@ export const APP_ROUTES: Routes = [
   },
   {
     path: 'integrations',
-    canActivate: [authGuard],
+    canActivate: [bffAuthGuard],
     loadComponent: loadPlaceholder,
     data: {
       title: 'Integrations',
