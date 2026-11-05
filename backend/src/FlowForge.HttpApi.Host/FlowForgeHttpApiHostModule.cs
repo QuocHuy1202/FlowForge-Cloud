@@ -23,6 +23,7 @@ using Volo.Abp.Account;
 using Volo.Abp.Account.Web;
 using Volo.Abp.AspNetCore.MultiTenancy;
 using Volo.Abp.AspNetCore.Mvc;
+using Volo.Abp.AspNetCore.Mvc.Libs;
 using Volo.Abp.Autofac;
 using Volo.Abp.Localization;
 using Volo.Abp.Modularity;
@@ -59,6 +60,7 @@ public class FlowForgeHttpApiHostModule : AbpModule
     public override void PreConfigureServices(ServiceConfigurationContext context)
     {
         var hostingEnvironment = context.Services.GetHostingEnvironment();
+
         var configuration = context.Services.GetConfiguration();
 
         PreConfigure<OpenIddictBuilder>(builder =>
@@ -88,6 +90,8 @@ public class FlowForgeHttpApiHostModule : AbpModule
 
     public override void ConfigureServices(ServiceConfigurationContext context)
     {
+        // Angular UI - backend does not serve client-side libs.
+        Configure<AbpMvcLibsOptions>(options => { options.CheckLibs = false; });
         var configuration = context.Services.GetConfiguration();
         var hostingEnvironment = context.Services.GetHostingEnvironment();
 
@@ -273,11 +277,11 @@ public class FlowForgeHttpApiHostModule : AbpModule
             app.UseErrorPage();
         }
 
+        app.UseCors();
         app.UseRouting();
         app.MapAbpStaticAssets();
         app.UseAbpStudioLink();
         app.UseAbpSecurityHeaders();
-        app.UseCors();
         app.UseAuthentication();
         app.UseAbpOpenIddictValidation();
 
