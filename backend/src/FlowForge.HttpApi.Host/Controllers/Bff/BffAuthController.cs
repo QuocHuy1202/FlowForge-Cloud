@@ -185,6 +185,49 @@ public class BffAuthController : ControllerBase
                 .GetUserName(principal)
         });
     }
+    
+    [HttpPost("logout")]
+    [AllowAnonymous]
+    public async Task<IActionResult> Logout(
+        [FromHeader(Name = "X-XSRF-TOKEN")] string csrfToken)
+    {
+        Response.Headers.CacheControl = "no-store";
+
+        // 1. Validate CSRF token
+        try
+        {
+            await _antiforgery.ValidateRequestAsync(HttpContext);
+        }
+        catch (AntiforgeryValidationException)
+        {
+            return BadRequest(new
+            {
+                message = "Invalid or missing CSRF token."
+            });
+        }
+
+        // 2. Check the BFF identity cookie explicitly.
+        // The default ABP auth scheme may use OpenIddict.
+        var authResult = await HttpContext.AuthenticateAsync(
+            IdentityConstants.ApplicationScheme
+        );
+
+        if (!authResult.Succeeded ||
+            authResult.Principal?.Identity?.IsAuthenticated != true)
+        {
+            return Unauthorized(new
+            {
+                message = "No active session."
+            });
+        }
+
+        // 3. Sign out through ASP.NET Core Identity.
+        await _signInManager.SignOutAsync();
+
+        // 4. Return a response without caching.
+        return NoContent();
+    }
+
 }
 
 public sealed class BffLoginRequest

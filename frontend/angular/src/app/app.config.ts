@@ -1,8 +1,8 @@
-import { provideAbpCore, withOptions } from '@abp/ng.core';
+import { AuthService, provideAbpCore, withOptions } from '@abp/ng.core';
 import { provideAbpOAuth } from '@abp/ng.oauth';
 import { provideSettingManagementConfig } from '@abp/ng.setting-management/config';
 import { provideFeatureManagementConfig } from '@abp/ng.feature-management';
-import { provideAbpThemeShared,} from '@abp/ng.theme.shared';
+import { provideAbpThemeShared } from '@abp/ng.theme.shared';
 import { provideIdentityConfig } from '@abp/ng.identity/config';
 import { provideAccountConfig } from '@abp/ng.account/config';
 import { provideTenantManagementConfig } from '@abp/ng.tenant-management/config';
@@ -17,6 +17,7 @@ import { environment } from '../environments/environment';
 import { APP_ROUTES } from './app.routes';
 import { APP_ROUTE_PROVIDER } from './route.provider';
 import { FOOTER_PROVIDER } from './footer/footer.config';
+import { FlowForgeAuthService } from './core/auth/flowforge-auth.service';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -31,6 +32,11 @@ export const appConfig: ApplicationConfig = {
       }),
     ),
     provideAbpOAuth(),
+    // Override ABP default AuthService with FlowForgeAuthService for BFF logout and redirect to public home
+    {
+      provide: AuthService,
+      useExisting: FlowForgeAuthService,
+    },
     provideIdentityConfig(),
     provideSettingManagementConfig(),
     provideFeatureManagementConfig(),

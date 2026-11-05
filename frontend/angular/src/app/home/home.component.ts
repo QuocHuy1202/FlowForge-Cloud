@@ -7,4 +7,4 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: []
 })
-export class HomeComponent {}
+export class HomeComponent { }
