@@ -19,4 +19,6 @@ infrastructure/docker/.env
 **/obj/
 **/.angular/
 **/dist/
-**/Logs/
+**/Logs/**/*.crt
+**/.certs/
+**/logs.txt

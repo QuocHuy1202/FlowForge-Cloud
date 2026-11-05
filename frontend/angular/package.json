@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "node --use-system-ca ./node_modules/@angular/cli/bin/ng.js serve --ssl --ssl-cert .certs/localhost.crt --ssl-key .certs/localhost.key --proxy-config proxy.conf.json",
     "build": "ng build",
     "build:prod": "ng build --configuration production",
     "watch": "ng build --watch --configuration development",

@@ -124,6 +124,7 @@ public class FlowForgeHttpApiHostModule : AbpModule
 
         ConfigureStudio(hostingEnvironment);
         ConfigureAuthentication(context);
+        ConfigureBffAntiforgery(context);
         ConfigureUrls(configuration);
         ConfigureBundles(hostingEnvironment);
         ConfigureConventionalControllers();
@@ -150,6 +151,20 @@ public class FlowForgeHttpApiHostModule : AbpModule
         context.Services.Configure<AbpClaimsPrincipalFactoryOptions>(options =>
         {
             options.IsDynamicClaimsEnabled = true;
+        });
+    }
+
+    private void ConfigureBffAntiforgery(
+        ServiceConfigurationContext context)
+    {
+        context.Services.AddAntiforgery(options =>
+        {
+            options.HeaderName = "X-XSRF-TOKEN";
+            options.Cookie.Name = "FlowForge.Antiforgery";
+            options.Cookie.HttpOnly = true;
+            options.Cookie.SameSite = Microsoft.AspNetCore.Http.SameSiteMode.Lax;
+            options.Cookie.SecurePolicy =
+                Microsoft.AspNetCore.Http.CookieSecurePolicy.Always;
         });
     }
 
