@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\FlowForge.Application\FlowForge.Application.csproj" />
+    <ProjectReference Include="..\..\src\FlowForge.HttpApi.Host\FlowForge.HttpApi.Host.csproj" />
     <ProjectReference Include="..\FlowForge.Domain.Tests\FlowForge.Domain.Tests.csproj" />
   </ItemGroup>
 
