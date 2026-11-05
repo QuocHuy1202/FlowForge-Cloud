@@ -1,11 +1,63 @@
-<div class="container mt-5 text-center">
-  <h1>Welcome to FlowForge Cloud</h1>
-  <p class="lead text-muted">Workflow automation platform</p>
+<div class="flowforge-dashboard">
+  <header class="dashboard-header">
+    <div>
+      <span class="eyebrow">OVERVIEW</span>
+      <h1>Dashboard</h1>
+      <p>
+        Monitor your workflows, executions,
+        and pending tasks.
+      </p>
+    </div>
+    <span class="environment-label">FlowForge Cloud</span>
+  </header>
 
-  @if (!hasLoggedIn) {
-    <button (click)="login()" class="btn btn-primary mt-3">
-      <i class="fa-solid fa-right-to-bracket me-1"></i>
-      {{ 'AbpAccount::Login' | abpLocalization }}
-    </button>
-  }
+  <section class="stats-grid" aria-label="Overview">
+    <article class="stat-card">
+      <span class="stat-label">Total Workflows</span>
+      <strong class="stat-value">0</strong>
+      <span class="stat-description">
+        No workflows created
+      </span>
+    </article>
+
+    <article class="stat-card">
+      <span class="stat-label">Executions</span>
+      <strong class="stat-value">0</strong>
+      <span class="stat-description">
+        No executions recorded
+      </span>
+    </article>
+
+    <article class="stat-card">
+      <span class="stat-label">Pending Tasks</span>
+      <strong class="stat-value">0</strong>
+      <span class="stat-description">
+        Nothing requires your attention
+      </span>
+    </article>
+
+    <article class="stat-card">
+      <span class="stat-label">Success Rate</span>
+      <strong class="stat-value">—</strong>
+      <span class="stat-description">
+        No execution data available
+      </span>
+    </article>
+  </section>
+
+  <section class="content-panel">
+    <div class="panel-heading">
+      <h2>Workflows</h2>
+      <p>Manage your automation workflows.</p>
+    </div>
+
+    <div class="empty-state">
+      <div class="empty-icon" aria-hidden="true">◇</div>
+      <h3>No workflows yet</h3>
+      <p>
+        Your workspace is ready. Workflow creation
+        will be available in the next module.
+      </p>
+    </div>
+  </section>
 </div>
