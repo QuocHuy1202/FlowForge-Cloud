@@ -1,3 +1,5 @@
+import { LocalizationService } from '@abp/ng.core';
+import { localizationMock } from '../../../../testing/localization';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
 import { beforeEach, describe, expect, it } from 'vitest';
@@ -10,7 +12,7 @@ describe('RegisterComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [RegisterComponent],
-      providers: [provideRouter([])],
+      providers: [provideRouter([]), { provide: LocalizationService, useValue: localizationMock() }],
     })
       .overrideComponent(RegisterComponent, {
         set: { template: '<form [formGroup]="form"></form>', styleUrls: [] },

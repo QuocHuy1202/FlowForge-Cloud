@@ -1,4 +1,3 @@
-
 import { Component, inject, OnInit } from '@angular/core';
 import {
     AbstractControl,
@@ -8,6 +7,9 @@ import {
     Validators,
 } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
+import { LocalizationService } from '@abp/ng.core';
+import { LanguageSwitchComponent } from '../../shared/components/language-switch/language-switch.component';
+import { AppLocalizationPipe } from '../../shared/pipes/localization.pipe';
 
 function passwordsMatch(
     control: AbstractControl
@@ -23,11 +25,12 @@ function passwordsMatch(
 @Component({
     selector: 'app-register',
     standalone: true,
-    imports: [ReactiveFormsModule, RouterLink],
+    imports: [ReactiveFormsModule, RouterLink, LanguageSwitchComponent, AppLocalizationPipe],
     templateUrl: './register.component.html',
     styleUrl: './register.component.scss',
 })
 export class RegisterComponent implements OnInit {
+    private readonly localization = inject(LocalizationService);
     private readonly fb = inject(FormBuilder);
     private readonly router = inject(Router);
 
@@ -39,6 +42,7 @@ export class RegisterComponent implements OnInit {
                     Validators.required,
                     Validators.minLength(3),
                     Validators.maxLength(256),
+                    Validators.pattern(/^[a-zA-Z0-9_-]+$/),
                 ],
             ],
             emailAddress: [
@@ -49,37 +53,43 @@ export class RegisterComponent implements OnInit {
                     Validators.maxLength(256),
                 ],
             ],
-            password: ['', [Validators.required]],
-            confirmPassword: ['', [Validators.required]],
+            password: [
+                '',
+                [
+                    Validators.required,
+                    Validators.minLength(6),
+                ],
+            ],
+            confirmPassword: [
+                '',
+                [
+                    Validators.required,
+                ],
+            ],
         },
-        { validators: passwordsMatch }
+        { validators: [passwordsMatch] }
     );
 
     loading = false;
-    errorMessage = '';
     showPassword = false;
     showConfirmPassword = false;
+    errorMessage = '';
 
     private csrfToken: string | null = null;
 
     async ngOnInit(): Promise<void> {
-        await this.loadCsrfToken();
-    }
-
-    private async loadCsrfToken(): Promise<string> {
-        const response = await fetch('/api/bff/auth/csrf', {
-            credentials: 'same-origin',
-            cache: 'no-store',
-        });
-
-        if (!response.ok) {
-            throw new Error('Unable to initialize secure registration.');
+        try {
+            const response = await fetch('/api/bff/auth/csrf', {
+                credentials: 'same-origin',
+                cache: 'no-store',
+            });
+            if (response.ok) {
+                const data = await response.json();
+                this.csrfToken = data.token;
+            }
+        } catch {
+            this.csrfToken = null;
         }
-
-        const data: { token: string } = await response.json();
-        this.csrfToken = data.token;
-
-        return data.token;
     }
 
     async onSubmit(): Promise<void> {
@@ -94,56 +104,42 @@ export class RegisterComponent implements OnInit {
         this.errorMessage = '';
 
         try {
-            const token =
-                this.csrfToken ?? (await this.loadCsrfToken());
-
-            const { userName, emailAddress, password, confirmPassword } =
-                this.form.getRawValue();
+            let token = this.csrfToken;
+            if (!token) {
+                const csrfResponse = await fetch('/api/bff/auth/csrf', {
+                    credentials: 'same-origin',
+                    cache: 'no-store',
+                });
+                if (!csrfResponse.ok) {
+                    throw new Error('Unable to get CSRF token.');
+                }
+                const csrf = await csrfResponse.json();
+                token = csrf.token;
+            }
 
             const response = await fetch('/api/bff/auth/register', {
                 method: 'POST',
                 credentials: 'same-origin',
-                cache: 'no-store',
                 headers: {
                     'Content-Type': 'application/json',
-                    'X-XSRF-TOKEN': token,
+                    'X-XSRF-TOKEN': token ?? '',
                     'X-Requested-With': 'XMLHttpRequest',
                 },
-                body: JSON.stringify({
-                    userName: userName.trim(),
-                    emailAddress: emailAddress.trim(),
-                    password,
-                    confirmPassword,
-                }),
+                body: JSON.stringify(this.form.getRawValue()),
             });
 
             if (!response.ok) {
-                if (response.status === 400) {
-                    this.errorMessage =
-                        'Registration information is invalid. Check the fields and password policy.';
-                } else if (response.status === 403) {
-                    this.errorMessage =
-                        'Account registration is currently unavailable.';
-                } else if (response.status === 429) {
-                    this.errorMessage =
-                        'Too many requests. Please try again later.';
-                } else {
-                    this.errorMessage =
-                        'Unable to create your account. Please try again.';
-                }
-
+                const errData = await response.json().catch(() => ({}));
+                this.errorMessage =
+                    errData.message || this.localization.instant('::Register:defaultError');
                 return;
             }
-
-            this.form.controls.password.reset();
-            this.form.controls.confirmPassword.reset();
 
             await this.router.navigate(['/login'], {
                 queryParams: { registered: 'true' },
             });
         } catch {
-            this.errorMessage =
-                'Could not connect to the server. Please try again.';
+            this.errorMessage = this.localization.instant('::Register:defaultError');
         } finally {
             this.loading = false;
         }
