@@ -2,7 +2,7 @@ import { AuthService, provideAbpCore, withOptions } from '@abp/ng.core';
 import { provideAbpOAuth } from '@abp/ng.oauth';
 import { provideSettingManagementConfig } from '@abp/ng.setting-management/config';
 import { provideFeatureManagementConfig } from '@abp/ng.feature-management';
-import { provideAbpThemeShared } from '@abp/ng.theme.shared';
+import { provideAbpThemeShared, withHttpErrorConfig } from '@abp/ng.theme.shared';
 import { provideIdentityConfig } from '@abp/ng.identity/config';
 import { provideAccountConfig } from '@abp/ng.account/config';
 import { provideTenantManagementConfig } from '@abp/ng.tenant-management/config';
@@ -18,6 +18,7 @@ import { APP_ROUTES } from './app.routes';
 import { APP_ROUTE_PROVIDER } from './route.provider';
 import { FOOTER_PROVIDER } from './footer/footer.config';
 import { FlowForgeAuthService } from './core/auth/flowforge-auth.service';
+import { HttpErrorComponent } from './shared/components/http-error/http-error.component';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -45,6 +46,14 @@ export const appConfig: ApplicationConfig = {
     provideLogo(withEnvironmentOptions(environment)),
     provideAccountConfig(),
     provideTenantManagementConfig(),
-    provideAbpThemeShared(),
+    provideAbpThemeShared(
+      withHttpErrorConfig({
+        errorScreen: {
+          component: HttpErrorComponent,
+          forWhichErrors: [0, 401, 403, 404, 500],
+          hideCloseIcon: false,
+        },
+      }),
+    ),
   ]
 };

@@ -7,67 +7,67 @@
             </a>
 
             <div class="brand-content">
-                <span class="eyebrow">WORKFLOW AUTOMATION</span>
+                <span class="eyebrow">{{ ('::Login:brandEyebrow' | appLocalization) }}</span>
 
-                <h1>Automate smarter.<br />Work better.</h1>
+                <h1>{{ ('::Login:heroTitle' | appLocalization) }}</h1>
 
-                <p>
-                    Your workflows, tasks and automation
-                    in one secure workspace.
-                </p>
+                <p>{{ ('::Login:heroDesc' | appLocalization) }}</p>
 
                 <div class="workflow-decoration">
-                    <div class="step">01 <span>Design workflow</span></div>
-                    <div class="step">02 <span>Automate process</span></div>
-                    <div class="step">03 <span>Track execution</span></div>
+                    <div class="step">01 <span>{{ ('::Login:step1' | appLocalization) }}</span></div>
+                    <div class="step">02 <span>{{ ('::Login:step2' | appLocalization) }}</span></div>
+                    <div class="step">03 <span>{{ ('::Login:step3' | appLocalization) }}</span></div>
                 </div>
             </div>
 
-            <div class="brand-footer">Build. Automate. Scale.</div>
+            <div class="brand-footer">{{ ('::Login:tagline' | appLocalization) }}</div>
         </aside>
 
         <main class="auth-form-area">
             <div class="form-container">
-                <a routerLink="/" class="back-link">
-                    ← Back to home
-                </a>
+                <div class="form-top-bar" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                    <a routerLink="/" class="back-link" style="margin-bottom: 0;">
+                        {{ ('::Login:backHome' | appLocalization) }}
+                    </a>
+                    <app-language-switch />
+                </div>
 
                 <div class="form-header">
-                    <h2>Welcome back</h2>
-                    <p>Sign in to your FlowForge workspace.</p>
+                    <h2>{{ ('::Login:title' | appLocalization) }}</h2>
+                    <p>{{ ('::Login:subtitle' | appLocalization) }}</p>
                 </div>
 
                 <form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
                     <div class="form-field">
-                        <label for="userName">Username</label>
+                        <label for="userName">{{ ('::Login:userName' | appLocalization) }}</label>
                         <input id="userName" type="text" formControlName="userName" autocomplete="username"
-                            placeholder="Enter your username" />
+                            [placeholder]="('::Login:userNamePlaceholder' | appLocalization)" />
 
                         @if (form.controls.userName.touched &&
                         form.controls.userName.hasError('required')) {
                         <small class="field-error">
-                            Username is required.
+                            {{ ('::Login:userNameRequired' | appLocalization) }}
                         </small>
                         }
                     </div>
 
                     <div class="form-field">
-                        <label for="password">Password</label>
+                        <label for="password">{{ ('::Login:password' | appLocalization) }}</label>
 
                         <div class="password-wrapper">
                             <input id="password" [type]="showPassword ? 'text' : 'password'" formControlName="password"
-                                autocomplete="current-password" placeholder="Enter your password" />
+                                autocomplete="current-password" [placeholder]="('::Login:passwordPlaceholder' | appLocalization)" />
 
                             <button type="button" class="show-password" (click)="showPassword = !showPassword"
-                                [attr.aria-label]="showPassword ? 'Hide password' : 'Show password'">
-                                {{ showPassword ? 'Hide' : 'Show' }}
+                                [attr.aria-label]="showPassword ? ('::Login:hide' | appLocalization) : ('::Login:show' | appLocalization)">
+                                {{ showPassword ? ('::Login:hide' | appLocalization) : ('::Login:show' | appLocalization) }}
                             </button>
                         </div>
 
                         @if (form.controls.password.touched &&
                         form.controls.password.hasError('required')) {
                         <small class="field-error">
-                            Password is required.
+                            {{ ('::Login:passwordRequired' | appLocalization) }}
                         </small>
                         }
                     </div>
@@ -75,7 +75,7 @@
                     <div class="form-options">
                         <label class="remember-option">
                             <input type="checkbox" formControlName="rememberMe" />
-                            Remember me
+                            {{ ('::Login:rememberMe' | appLocalization) }}
                         </label>
                     </div>
 
@@ -86,13 +86,13 @@
                     }
 
                     <button class="submit-button" type="submit" [disabled]="loading">
-                        {{ loading ? 'Signing in...' : 'Sign In' }}
+                        {{ loading ? ('::Login:signingIn' | appLocalization) : ('::Login:signIn' | appLocalization) }}
                     </button>
                 </form>
 
                 <p class="register-text">
-                    Don't have an account?
-                    <a routerLink="/register">Create account</a>
+                    {{ ('::Login:noAccount' | appLocalization) }}
+                    <a routerLink="/register">{{ ('::Login:createAccount' | appLocalization) }}</a>
                 </p>
             </div>
         </main>

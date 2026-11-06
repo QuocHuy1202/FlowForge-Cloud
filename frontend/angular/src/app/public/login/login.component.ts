@@ -1,7 +1,9 @@
-
 import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
+import { LocalizationService } from '@abp/ng.core';
+import { LanguageSwitchComponent } from '../../shared/components/language-switch/language-switch.component';
+import { AppLocalizationPipe } from '../../shared/pipes/localization.pipe';
 
 interface CsrfResponse {
     token: string;
@@ -16,11 +18,12 @@ interface SessionResponse {
 @Component({
     selector: 'app-login',
     standalone: true,
-    imports: [ReactiveFormsModule, RouterLink],
+    imports: [ReactiveFormsModule, RouterLink, LanguageSwitchComponent, AppLocalizationPipe],
     templateUrl: './login.component.html',
     styleUrl: './login.component.scss',
 })
 export class LoginComponent implements OnInit {
+    private readonly localization = inject(LocalizationService);
     private readonly fb = inject(FormBuilder);
     private readonly router = inject(Router);
 
@@ -34,11 +37,9 @@ export class LoginComponent implements OnInit {
     showPassword = false;
     errorMessage = '';
 
-    // Prefetched on page load — ready before user clicks Sign In
     private csrfToken: string | null = null;
 
     async ngOnInit(): Promise<void> {
-        // 1. Pre-fetch CSRF token
         try {
             const response = await fetch('/api/bff/auth/csrf', {
                 credentials: 'same-origin',
@@ -52,7 +53,6 @@ export class LoginComponent implements OnInit {
             this.csrfToken = null;
         }
 
-        // 2. Pre-load Dashboard bundle in background while user is typing
         import('../../home/home.component').catch(() => {
             // Silently ignore preload errors
         });
@@ -70,7 +70,6 @@ export class LoginComponent implements OnInit {
         this.errorMessage = '';
 
         try {
-            // Use prefetched token; fallback to fresh fetch if not ready
             let token = this.csrfToken;
 
             if (!token) {
@@ -85,65 +84,46 @@ export class LoginComponent implements OnInit {
                 token = csrf.token;
             }
 
-            const loginResponse = await fetch('/api/bff/auth/login', {
+            const response = await fetch('/api/bff/auth/login', {
                 method: 'POST',
                 credentials: 'same-origin',
-                cache: 'no-store',
                 headers: {
                     'Content-Type': 'application/json',
-                    'X-XSRF-TOKEN': token,
+                    'X-XSRF-TOKEN': token ?? '',
                     'X-Requested-With': 'XMLHttpRequest',
                 },
                 body: JSON.stringify(this.form.getRawValue()),
             });
 
-            if (!loginResponse.ok) {
-                switch (loginResponse.status) {
-                    case 400:
-                        this.errorMessage = 'Invalid request or security token.';
-                        break;
-                    case 401:
-                        this.errorMessage = 'Invalid username or password.';
-                        break;
-                    case 403:
-                        this.errorMessage = 'Your account cannot sign in.';
-                        break;
-                    case 409:
-                        this.errorMessage =
-                            'Additional verification is required. Please use the supported verification flow.';
-                        break;
-                    case 423:
-                        this.errorMessage = 'Account temporarily locked.';
-                        break;
-                    default:
-                        this.errorMessage = 'Sign in failed. Please try again.';
-                }
+            if (!response.ok) {
+                const errData = await response.json().catch(() => ({}));
+                this.errorMessage =
+                    errData.message || this.localization.instant('::Login:defaultError');
                 return;
             }
 
-            // Verify that the browser received a valid session.
             const meResponse = await fetch('/api/bff/auth/me', {
                 credentials: 'same-origin',
                 cache: 'no-store',
             });
 
             if (!meResponse.ok) {
-                throw new Error('Login succeeded, but session verification failed.');
+                this.errorMessage =
+                    this.localization.instant('::Login:sessionError');
+                return;
             }
 
             const session: SessionResponse = await meResponse.json();
-
             if (!session.authenticated) {
-                throw new Error('Authentication session is unavailable.');
+                this.errorMessage =
+                    this.localization.instant('::Login:authenticationError');
+                return;
             }
 
-            this.form.controls.password.reset();
             await this.router.navigateByUrl('/dashboard');
-        } catch (error) {
+        } catch {
             this.errorMessage =
-                error instanceof Error
-                    ? error.message
-                    : 'An unexpected error occurred.';
+                this.localization.instant('::Login:defaultError');
         } finally {
             this.loading = false;
         }

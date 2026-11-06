@@ -1,0 +1,133 @@
+<div class="custom-error-backdrop">
+  <div class="custom-error-card">
+    <!-- Top toolbar inside card: Badge + Language Switcher -->
+    <div class="card-toolbar">
+      <span class="badge">{{ (currentStatus() === 0 ? '::HttpError:connectionLost' : '::HttpError:badge') | appLocalization:displayCode() }}</span>
+      <app-language-switch />
+    </div>
+
+    <!-- Main Content Grid -->
+    <div class="card-body">
+      <!-- Left Column: User-Friendly Information & Actions -->
+      <div class="card-left">
+        <h1 class="title">{{ ('::HttpError:' + errorKey() + ':Title') | appLocalization }}</h1>
+        <p class="description">{{ ('::HttpError:' + errorKey() + ':Description') | appLocalization }}</p>
+
+        <div class="actions">
+          <button type="button" class="btn btn-primary" (click)="onReload()">
+            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="23 4 23 10 17 10"></polyline>
+              <polyline points="1 20 1 14 7 14"></polyline>
+              <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
+            </svg>
+            {{ '::HttpError:reload' | appLocalization }}
+          </button>
+
+          <button type="button" class="btn btn-secondary" (click)="onGoHome()">
+            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+              <polyline points="9 22 9 12 15 12 15 22"></polyline>
+            </svg>
+            {{ '::HttpError:home' | appLocalization }}
+          </button>
+        </div>
+      </div>
+
+      <!-- Right Column: Pure Code Vector Illustration (No static image files) -->
+      <div class="card-right" aria-hidden="true">
+        <svg class="error-illustration" viewBox="0 0 800 450" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="customBgBlobGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#e0f2fe" stop-opacity="0.9"/>
+              <stop offset="100%" stop-color="#bae6fd" stop-opacity="0.4"/>
+            </linearGradient>
+            <linearGradient id="customBookGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#ffffff"/>
+              <stop offset="100%" stop-color="#f8fafc"/>
+            </linearGradient>
+            <linearGradient id="customCupGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#e0f2fe"/>
+              <stop offset="100%" stop-color="#bae6fd"/>
+            </linearGradient>
+            <filter id="gentleGlow" x="-20%" y="-20%" width="140%" height="140%">
+              <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#0284c7" flood-opacity="0.12"/>
+            </filter>
+          </defs>
+
+          <!-- Background organic wave shape -->
+          <path d="M 120 220 C 100 130, 240 70, 400 75 C 580 80, 720 120, 740 210 C 760 300, 640 370, 480 375 C 280 380, 140 310, 120 220 Z" fill="url(#customBgBlobGrad)"/>
+
+          <!-- Floating Shelf on Left -->
+          <g class="anim-shelf" stroke="#0369a1" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="160" y1="175" x2="290" y2="175" stroke-width="3.5"/>
+            <line x1="172" y1="175" x2="172" y2="185"/>
+            <line x1="278" y1="175" x2="278" y2="185"/>
+
+            <!-- Plant pot on shelf -->
+            <rect x="172" y="132" width="52" height="43" rx="4" fill="#ffffff"/>
+            <line x1="172" y1="160" x2="224" y2="160" stroke="#bae6fd" stroke-width="2"/>
+            <path d="M 188 132 C 182 100, 196 60, 204 52 C 208 75, 204 110, 198 132 Z" fill="#38bdf8" fill-opacity="0.35"/>
+            <path d="M 204 132 C 206 105, 218 80, 226 92 C 224 110, 218 122, 212 132 Z" fill="#0ea5e9" fill-opacity="0.3"/>
+
+            <!-- Books on shelf -->
+            <rect x="228" y="80" width="18" height="95" rx="3" fill="#ffffff"/>
+            <line x1="237" y1="100" x2="237" y2="155" stroke="#bae6fd" stroke-width="2"/>
+            <rect x="249" y="100" width="16" height="75" rx="3" fill="#e0f2fe"/>
+            <line x1="257" y1="115" x2="257" y2="160" stroke="#0284c7" stroke-width="2"/>
+          </g>
+
+          <!-- Desk Surface Line -->
+          <g stroke="#0369a1" stroke-width="3.5" stroke-linecap="round">
+            <line x1="85" y1="355" x2="100" y2="355"/>
+            <line x1="112" y1="355" x2="680" y2="355"/>
+            <line x1="692" y1="355" x2="715" y2="355"/>
+            <line x1="160" y1="375" x2="560" y2="375" stroke="#94a3b8" stroke-width="2" opacity="0.5"/>
+          </g>
+
+          <!-- Left: Stacked horizontal books on desk -->
+          <g stroke="#0369a1" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="135" y="325" width="125" height="30" rx="6" fill="#ffffff"/>
+            <path d="M 185 325 L 185 342 L 192 336 L 199 342 L 199 325 Z" fill="#0284c7" stroke="none"/>
+            <line x1="210" y1="340" x2="245" y2="340" stroke="#bae6fd" stroke-width="2.5"/>
+
+            <rect x="145" y="300" width="110" height="25" rx="5" fill="#e0f2fe"/>
+            <line x1="165" y1="312" x2="225" y2="312" stroke="#0284c7" stroke-width="2.5"/>
+          </g>
+
+          <!-- Center: Standing Book with DYNAMIC Status Code & Subtitle -->
+          <g id="mainBook" filter="url(#gentleGlow)" class="anim-float">
+            <!-- Spine & 3D Pages -->
+            <path d="M 465 130 L 485 133 L 485 352 L 465 355 Z" fill="#bae6fd" stroke="#0369a1" stroke-width="3.5" stroke-linejoin="round"/>
+            <line x1="475" y1="135" x2="475" y2="350" stroke="#0284c7" stroke-width="2"/>
+            <line x1="479" y1="160" x2="479" y2="180" stroke="#0369a1" stroke-width="2"/>
+            <line x1="479" y1="250" x2="479" y2="270" stroke="#0369a1" stroke-width="2"/>
+
+            <!-- Front Cover -->
+            <rect x="295" y="130" width="170" height="225" rx="8" fill="url(#customBookGrad)" stroke="#0369a1" stroke-width="3.5" stroke-linejoin="round"/>
+
+            <!-- Bookmark Ribbon -->
+            <path d="M 430 130 L 430 160 L 443 150 L 456 160 L 456 130 Z" fill="#0284c7" stroke="#0369a1" stroke-width="2.5" stroke-linejoin="round"/>
+
+            <!-- Decorative Shadow -->
+            <path d="M 300 350 L 360 290 L 460 290 L 460 350 Z" fill="#e0f2fe" fill-opacity="0.45"/>
+
+            <!-- Pure Code Typography (Dynamic) -->
+            <text x="380" y="195" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="20" fill="#0369a1" letter-spacing="1">HTTP</text>
+            <text x="380" y="215" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-weight="600" font-size="12" fill="#0284c7" letter-spacing="0.5">{{ '::HttpError:bookSubtitle' | appLocalization }}</text>
+            <text x="380" y="295" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="56" fill="#0369a1" letter-spacing="-2">{{ displayCode() }}</text>
+          </g>
+
+          <!-- Right: Pencil Cup -->
+          <g stroke="#0369a1" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M 575 260 L 565 210 L 575 195 L 585 210 L 580 260" fill="#ffffff"/>
+            <line x1="570" y1="210" x2="578" y2="255" stroke="#0284c7" stroke-width="2"/>
+            <path d="M 590 260 L 600 220 L 608 220 L 602 260" fill="#0ea5e9"/>
+
+            <rect x="545" y="268" width="65" height="87" rx="6" fill="url(#customCupGrad)"/>
+            <path d="M 545 268 L 575 298 L 610 298 L 610 355 L 545 355 Z" fill="#bae6fd" fill-opacity="0.4" stroke="none"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+</div>

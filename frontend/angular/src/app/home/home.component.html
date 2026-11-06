@@ -1,63 +1,49 @@
 <div class="flowforge-dashboard">
   <header class="dashboard-header">
     <div>
-      <span class="eyebrow">OVERVIEW</span>
-      <h1>Dashboard</h1>
-      <p>
-        Monitor your workflows, executions,
-        and pending tasks.
-      </p>
+      <span class="eyebrow">{{ '::Dashboard:Overview' | appLocalization }}</span>
+      <h1>{{ '::Menu:Dashboard' | appLocalization }}</h1>
+      <p>{{ '::Dashboard:Description' | appLocalization }}</p>
     </div>
     <span class="environment-label">FlowForge Cloud</span>
   </header>
 
-  <section class="stats-grid" aria-label="Overview">
+  <section class="stats-grid" [attr.aria-label]="'::Dashboard:Overview' | appLocalization">
     <article class="stat-card">
-      <span class="stat-label">Total Workflows</span>
+      <span class="stat-label">{{ '::Dashboard:TotalWorkflows' | appLocalization }}</span>
       <strong class="stat-value">0</strong>
-      <span class="stat-description">
-        No workflows created
-      </span>
+      <span class="stat-description">{{ '::Dashboard:NoWorkflowsCreated' | appLocalization }}</span>
     </article>
 
     <article class="stat-card">
-      <span class="stat-label">Executions</span>
+      <span class="stat-label">{{ '::Menu:Executions' | appLocalization }}</span>
       <strong class="stat-value">0</strong>
-      <span class="stat-description">
-        No executions recorded
-      </span>
+      <span class="stat-description">{{ '::Dashboard:NoExecutionsRecorded' | appLocalization }}</span>
     </article>
 
     <article class="stat-card">
-      <span class="stat-label">Pending Tasks</span>
+      <span class="stat-label">{{ '::Dashboard:PendingTasks' | appLocalization }}</span>
       <strong class="stat-value">0</strong>
-      <span class="stat-description">
-        Nothing requires your attention
-      </span>
+      <span class="stat-description">{{ '::Dashboard:NothingRequiresAttention' | appLocalization }}</span>
     </article>
 
     <article class="stat-card">
-      <span class="stat-label">Success Rate</span>
+      <span class="stat-label">{{ '::Dashboard:SuccessRate' | appLocalization }}</span>
       <strong class="stat-value">—</strong>
-      <span class="stat-description">
-        No execution data available
-      </span>
+      <span class="stat-description">{{ '::Dashboard:NoExecutionData' | appLocalization }}</span>
     </article>
   </section>
 
   <section class="content-panel">
     <div class="panel-heading">
-      <h2>Workflows</h2>
-      <p>Manage your automation workflows.</p>
+      <h2>{{ '::Menu:Workflows' | appLocalization }}</h2>
+      <p>{{ '::Dashboard:ManageWorkflows' | appLocalization }}</p>
     </div>
 
     <div class="empty-state">
       <div class="empty-icon" aria-hidden="true">◇</div>
-      <h3>No workflows yet</h3>
-      <p>
-        Your workspace is ready. Workflow creation
-        will be available in the next module.
-      </p>
+      <h3>{{ '::Dashboard:NoWorkflowsYet' | appLocalization }}</h3>
+      <p>{{ '::Dashboard:WorkspaceReady' | appLocalization }}</p>
     </div>
   </section>
 </div>

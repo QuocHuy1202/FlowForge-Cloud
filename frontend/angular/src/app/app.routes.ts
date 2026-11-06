@@ -56,8 +56,8 @@ export const APP_ROUTES: Routes = [
     canActivate: [bffAuthGuard],
     loadComponent: loadPlaceholder,
     data: {
-      title: 'Workflows',
-      description: 'Design and manage your workflows.',
+      title: '::Menu:Workflows',
+      description: '::Feature:Workflows:Description',
     },
   },
   {
@@ -65,8 +65,8 @@ export const APP_ROUTES: Routes = [
     canActivate: [bffAuthGuard],
     loadComponent: loadPlaceholder,
     data: {
-      title: 'Executions',
-      description: 'Monitor workflow execution history.',
+      title: '::Menu:Executions',
+      description: '::Feature:Executions:Description',
     },
   },
   {
@@ -74,8 +74,8 @@ export const APP_ROUTES: Routes = [
     canActivate: [bffAuthGuard],
     loadComponent: loadPlaceholder,
     data: {
-      title: 'My Tasks',
-      description: 'View and manage assigned tasks.',
+      title: '::Menu:Tasks',
+      description: '::Feature:Tasks:Description',
     },
   },
   {
@@ -83,8 +83,8 @@ export const APP_ROUTES: Routes = [
     canActivate: [bffAuthGuard],
     loadComponent: loadPlaceholder,
     data: {
-      title: 'Approvals',
-      description: 'Review and process approval requests.',
+      title: '::Menu:Approvals',
+      description: '::Feature:Approvals:Description',
     },
   },
   {
@@ -92,8 +92,8 @@ export const APP_ROUTES: Routes = [
     canActivate: [bffAuthGuard],
     loadComponent: loadPlaceholder,
     data: {
-      title: 'Schedules',
-      description: 'Manage scheduled workflow executions.',
+      title: '::Menu:Schedules',
+      description: '::Feature:Schedules:Description',
     },
   },
   {
@@ -101,8 +101,8 @@ export const APP_ROUTES: Routes = [
     canActivate: [bffAuthGuard],
     loadComponent: loadPlaceholder,
     data: {
-      title: 'Integrations',
-      description: 'Connect external systems and services.',
+      title: '::Menu:Integrations',
+      description: '::Feature:Integrations:Description',
     },
   },
 ];
