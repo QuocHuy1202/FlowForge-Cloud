@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="403 155 730 712" fill="none">
+  <defs>
+    <linearGradient id="brand" x1="423" y1="500" x2="1113" y2="500" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#00dce8"/>
+      <stop offset=".48" stop-color="#00cce9"/>
+      <stop offset="1" stop-color="#0066ff"/>
+    </linearGradient>
+  </defs>
+  <path fill="url(#brand)" fill-rule="evenodd" d="M423 175 565 279V425H969V279L1113 175V847H1075L969 657V521H873L1052 847H944L855 657H678L589 847H481L660 521H565V657L459 847H423V175ZM767 469 699 611H835L767 469Z"/>
+  <path fill="url(#brand)" d="M725 687H808V847H725Z"/>
+</svg>

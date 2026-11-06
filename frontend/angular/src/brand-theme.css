@@ -1,0 +1,325 @@
+/* Shared brand palette for the Angular app and the server account pages. */
+html:root {
+  color-scheme: light;
+  --ff-primary: #2563eb;
+  --ff-primary-hover: #1d4ed8;
+  --ff-cyan: #06b6d4;
+  --ff-ink: #102b58;
+  --ff-muted: #64748b;
+  --ff-border: #dbe7f5;
+  --ff-surface: #ffffff;
+  --ff-gradient: linear-gradient(135deg, #f0f9ff 0%, #eff6ff 48%, #ffffff 100%);
+  --ff-action-gradient: linear-gradient(120deg, #087ca7 0%, #2563eb 100%);
+  --lpx-brand: var(--ff-primary);
+  --lpx-primary: var(--ff-primary);
+  --lpx-secondary: #64748b;
+  --lpx-card-bg: var(--ff-surface);
+  --bs-primary: var(--ff-primary);
+  --bs-primary-rgb: 37, 99, 235;
+  --bs-link-color: var(--ff-primary);
+  --bs-link-color-rgb: 37, 99, 235;
+  --bs-link-hover-color: var(--ff-primary-hover);
+  --bs-link-hover-color-rgb: 29, 78, 216;
+  --bs-body-color: var(--ff-ink);
+  --bs-body-bg: #f4f8ff;
+  --bs-border-color: var(--ff-border);
+}
+
+html body {
+  color: var(--ff-ink);
+  background: var(--ff-gradient);
+  font-family: Inter, 'Segoe UI', Arial, sans-serif;
+}
+
+body .lpx-sidebar,
+body .lpx-sidebar .lpx-logo-container,
+body .lpx-sidebar .lpx-nav .lpx-nav-menu,
+body .lpx-sidebar-container .lpx-sidebar .lpx-nav .lpx-nav-menu,
+body .lpx-mobile-navbar,
+body .lpx-mobile-menu,
+body .lpx-mobile-menu .lpx-nav-menu,
+body .lpx-mobile-nav-items,
+body .user-menu-groups,
+body .lpx-topbar-container,
+body .lpx-footbar-container {
+  background: var(--ff-surface);
+  color: var(--ff-ink);
+}
+
+body .lpx-sidebar {
+  border-inline-end: 1px solid var(--ff-border);
+  box-shadow: 4px 0 24px rgb(37 99 235 / 4%);
+}
+
+body .lpx-content-container,
+body .lpx-content-wrapper,
+body .abp-account-layout {
+  background: var(--ff-gradient);
+  border-color: var(--ff-border);
+}
+
+body .lpx-topbar-container .lpx-topbar,
+body .lpx-footbar-container .lpx-footbar {
+  background: var(--ff-surface);
+  border-color: var(--ff-border);
+  color: var(--ff-muted);
+}
+
+body .lpx-brand-name {
+  background: transparent;
+  color: var(--ff-ink);
+  font-weight: 750;
+}
+
+body .lpx-brand-logo,
+body .abp-logo {
+  background-size: 38px 38px;
+  background-position: left center;
+  background-repeat: no-repeat;
+  min-height: 40px;
+}
+
+body .lpx-sidebar .lpx-brand-name {
+  left: 66px !important; /* The theme sets this offset inline. */
+  line-height: 40px;
+  height: 40px;
+}
+
+body .lpx-nav-menu .lpx-menu-item-link,
+body .lpx-menu-item,
+body .lpx-sidebar .menu-collapse-icon {
+  color: #475569;
+}
+
+body .lpx-sidebar-container .lpx-sidebar .lpx-nav {
+  background: var(--ff-surface);
+}
+
+body .lpx-menu-filter,
+body .lpx-menu-filter .menu-filter-input,
+body .lpx-menu-filter .menu-filter-input:is(:focus, :active) {
+  background: #eff6ff;
+  color: var(--ff-ink);
+  border-color: var(--ff-border);
+}
+
+body .user-menu-groups .btn-toggle {
+  color: var(--ff-ink);
+}
+
+body .lpx-sidebar-container .lpx-sidebar .lpx-nav .lpx-nav-menu .lpx-inner-menu {
+  background: var(--ff-surface);
+}
+
+body .lpx-nav-menu .lpx-menu-item-link:hover,
+body .lpx-nav-menu .lpx-inner-menu-item .lpx-menu-item-link:hover,
+body .lpx-menu-item:hover {
+  background: #eff6ff;
+  color: var(--ff-primary-hover);
+}
+
+body .lpx-nav-menu .lpx-menu-item-link.selected,
+body .lpx-nav-menu .lpx-menu-item-link.expanded,
+body .lpx-nav-menu .lpx-inner-menu-item .lpx-menu-item-link.selected,
+body .lpx-menu-item.selected {
+  background: linear-gradient(100deg, #e0f2fe, #eff6ff);
+  color: var(--ff-primary-hover);
+  box-shadow: inset 3px 0 var(--ff-primary);
+}
+
+body .lpx-nav-menu .lpx-menu-item-link:is(:hover, .selected, .expanded) :is(.lpx-menu-item-icon, .dd-icon),
+body .lpx-menu-item:is(:hover, .selected) :is(.lpx-menu-item-icon, .dd-icon) {
+  color: var(--ff-primary);
+}
+
+body .lpx-sidebar .lpx-nav-menu {
+  scrollbar-color: #bfdbfe #ffffff;
+}
+
+body .lpx-sidebar .lpx-nav-menu::-webkit-scrollbar-thumb {
+  background-color: #bfdbfe;
+}
+
+body .btn.btn-primary {
+  --bs-btn-bg: var(--ff-primary);
+  --bs-btn-border-color: var(--ff-primary);
+  --bs-btn-hover-bg: var(--ff-primary-hover);
+  --bs-btn-hover-border-color: var(--ff-primary-hover);
+  --bs-btn-active-bg: var(--ff-primary-hover);
+  --bs-btn-active-border-color: var(--ff-primary-hover);
+  --bs-btn-disabled-bg: var(--ff-primary);
+  --bs-btn-disabled-border-color: var(--ff-primary);
+  --bs-btn-focus-shadow-rgb: 37, 99, 235;
+  color: #ffffff;
+  background: var(--ff-action-gradient);
+  border-color: var(--ff-primary);
+}
+
+body .btn.btn-primary:hover {
+  background: var(--ff-primary-hover);
+}
+
+body .btn.btn-outline-primary {
+  --bs-btn-color: var(--ff-primary);
+  --bs-btn-border-color: var(--ff-primary);
+  --bs-btn-hover-bg: var(--ff-primary);
+  --bs-btn-hover-border-color: var(--ff-primary);
+  --bs-btn-active-bg: var(--ff-primary-hover);
+  --bs-btn-active-border-color: var(--ff-primary-hover);
+}
+
+body .form-control:focus,
+body .form-select:focus {
+  border-color: #60a5fa;
+  box-shadow: 0 0 0 3px rgb(37 99 235 / 12%);
+}
+
+body .form-check-input:checked,
+body .page-item.active .page-link,
+body .nav-pills .nav-link.active {
+  background-color: var(--ff-primary);
+  border-color: var(--ff-primary);
+}
+
+body .card,
+body .modal-content,
+body .dropdown-menu {
+  border-color: var(--ff-border);
+  border-radius: 14px;
+  box-shadow: 0 8px 30px rgb(37 99 235 / 5%);
+}
+
+/* Bootstrap Dim hardcodes the brand color on each component, so changing
+   --lpx-brand alone does not update these interaction states. */
+body .dropdown-menu {
+  --bs-dropdown-link-hover-color: var(--ff-primary-hover);
+  --bs-dropdown-link-hover-bg: #eff6ff;
+  --bs-dropdown-link-active-color: #ffffff;
+  --bs-dropdown-link-active-bg: var(--ff-primary);
+  --bs-dropdown-header-color: var(--ff-primary);
+}
+
+body .nav-tabs {
+  --bs-nav-tabs-link-active-color: var(--ff-primary);
+  --bs-nav-tabs-link-active-border-color: var(--ff-primary);
+}
+
+body .nav-tabs .nav-item .nav-link.active {
+  border-bottom-color: var(--ff-primary);
+}
+
+body .nav-tabs .dropdown-menu {
+  border-top-color: var(--ff-primary);
+}
+
+body .nav-pills {
+  --bs-nav-pills-link-active-color: #ffffff;
+  --bs-nav-pills-link-active-bg: var(--ff-primary);
+}
+
+body .accordion {
+  --bs-accordion-active-color: var(--ff-primary-hover);
+  --bs-accordion-active-bg: #eff6ff;
+}
+
+body .pagination {
+  --bs-pagination-active-bg: var(--ff-primary);
+  --bs-pagination-active-border-color: var(--ff-primary);
+}
+
+body .pagination .page-item .page-link:is(:hover, :focus, :active) {
+  color: var(--ff-primary) !important;
+}
+
+body .pagination .page-item.active .page-link {
+  background-color: var(--ff-primary) !important;
+  color: #ffffff !important;
+}
+
+body .list-group {
+  --bs-list-group-action-hover-bg: #eff6ff;
+  --bs-list-group-active-color: var(--ff-primary-hover);
+  --bs-list-group-active-bg: #dbeafe;
+  --bs-list-group-active-border-color: #bfdbfe;
+}
+
+body .btn-brand {
+  --bs-btn-color: #ffffff;
+  --bs-btn-bg: var(--ff-primary);
+  --bs-btn-hover-color: #ffffff;
+  --bs-btn-hover-bg: var(--ff-primary-hover);
+  --bs-btn-active-color: #ffffff;
+  --bs-btn-active-bg: var(--ff-primary-hover);
+}
+
+body .btn-brand.soft {
+  --bs-btn-color: var(--ff-primary);
+  --bs-btn-bg: #eff6ff;
+  --bs-btn-hover-color: var(--ff-primary-hover);
+  --bs-btn-hover-bg: #dbeafe;
+  --bs-btn-border-color: transparent;
+  --bs-btn-hover-border-color: transparent;
+}
+
+body .btn-brand.grey,
+body .btn-brand.no-bg {
+  --bs-btn-color: var(--ff-primary);
+  --bs-btn-hover-color: var(--ff-primary-hover);
+}
+
+body .text-brand,
+body .text-brand.soft {
+  color: var(--ff-primary) !important;
+}
+
+body .bg-brand,
+body .badge.bg-brand {
+  background-color: var(--ff-primary) !important;
+}
+
+body .bg-brand.soft,
+body .badge.bg-brand.soft {
+  color: var(--ff-primary) !important;
+  background-color: #eff6ff !important;
+}
+
+body .table-brand {
+  --bs-table-bg: #eff6ff;
+  background-color: #eff6ff;
+}
+
+body .alert-brand {
+  color: var(--ff-primary-hover);
+  background: #eff6ff;
+  border-color: #bfdbfe;
+}
+
+/* These states are marked !important in the vendor stylesheet. */
+body .form-check-input:checked,
+body .form-check-input[type=checkbox]:indeterminate,
+body .form-switch .form-check-input:checked {
+  background-color: var(--ff-primary) !important;
+  border-color: var(--ff-primary) !important;
+}
+
+body select.form-select option:is(:checked, :focus, :active) {
+  background: var(--ff-primary) !important;
+}
+
+body .form-range::-webkit-slider-thumb {
+  background-color: var(--ff-primary);
+}
+
+body .form-range::-moz-range-thumb {
+  background-color: var(--ff-primary);
+}
+
+body .bg-brand-gradient {
+  background: var(--ff-action-gradient) !important;
+}
+
+body a:focus-visible,
+body button:focus-visible {
+  outline: 3px solid #60a5fa;
+  outline-offset: 3px;
+}
