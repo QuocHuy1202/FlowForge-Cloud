@@ -9,7 +9,7 @@ import { FlowForgeAuthService } from './flowforge-auth.service';
 describe('FlowForgeAuthService', () => {
   let service: FlowForgeAuthService;
   let bffAuthMock: { logout: ReturnType<typeof vi.fn> };
-  let routerMock: { navigateByUrl: ReturnType<typeof vi.fn> };
+  let routerMock: { navigateByUrl: ReturnType<typeof vi.fn>; navigate: ReturnType<typeof vi.fn>; url: string };
   let oAuthServiceMock: Record<string, any>;
 
   beforeEach(() => {
@@ -18,6 +18,8 @@ describe('FlowForgeAuthService', () => {
     };
     routerMock = {
       navigateByUrl: vi.fn().mockResolvedValue(true),
+      navigate: vi.fn().mockResolvedValue(true),
+      url: '/tasks',
     };
     oAuthServiceMock = {
       configure: vi.fn(),
@@ -39,6 +41,26 @@ describe('FlowForgeAuthService', () => {
 
   it('should be created', () => {
     expect(service).toBeTruthy();
+  });
+
+  it('keeps the BFF session during silent OAuth cleanup', async () => {
+    await firstValueFrom(service.logout({ noRedirectToLogoutUrl: true }));
+    expect(bffAuthMock.logout).not.toHaveBeenCalled();
+    expect(routerMock.navigateByUrl).not.toHaveBeenCalled();
+  });
+
+  it('uses the current route as the login return URL', () => {
+    service.navigateToLogin();
+    expect(routerMock.navigate).toHaveBeenCalledWith(['/login'], {
+      queryParams: { returnUrl: '/tasks' },
+    });
+  });
+
+  it('preserves an explicit login return URL', () => {
+    service.navigateToLogin({ returnUrl: '/workflows' });
+    expect(routerMock.navigate).toHaveBeenCalledWith(['/login'], {
+      queryParams: { returnUrl: '/workflows' },
+    });
   });
 
   describe('logout', () => {

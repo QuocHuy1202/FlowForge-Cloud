@@ -1,6 +1,7 @@
 import { permissionGuard } from '@abp/ng.core';
 import { Routes } from '@angular/router';
 import { bffAuthGuard } from './core/auth/bff-auth.guard';
+import { publicHomeGuard } from './core/auth/public-home.guard';
 
 const loadPlaceholder = () =>
   import('./shared/pages/feature-placeholder/feature-placeholder.component')
@@ -10,6 +11,7 @@ export const APP_ROUTES: Routes = [
   {
     path: '',
     pathMatch: 'full',
+    canActivate: [publicHomeGuard],
     loadComponent: () =>
       import('./public/home/public-home.component')
         .then(c => c.PublicHomeComponent),
