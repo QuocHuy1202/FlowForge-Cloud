@@ -131,6 +131,7 @@
                 "inject": true,
                 "bundleName": "bootstrap-icons"
               },
+              "src/app/core/layout/sidebar.css",
               "src/styles.scss"
             ],
             "scripts": [],

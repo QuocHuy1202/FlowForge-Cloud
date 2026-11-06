@@ -1,3 +1,4 @@
+import { SIDEBAR_PROVIDER } from './core/layout/sidebar.config';
 import { AuthService, provideAbpCore, withOptions } from '@abp/ng.core';
 import { provideAbpOAuth } from '@abp/ng.oauth';
 import { provideSettingManagementConfig } from '@abp/ng.setting-management/config';
@@ -24,6 +25,7 @@ export const appConfig: ApplicationConfig = {
     provideRouter(APP_ROUTES),
     APP_ROUTE_PROVIDER,
     FOOTER_PROVIDER,
+    SIDEBAR_PROVIDER,
     provideAnimations(),
     provideAbpCore(
       withOptions({
