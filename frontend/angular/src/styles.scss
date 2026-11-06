@@ -1,11 +1,12 @@
-/* You can add global styles to this file, and also import other style files */
+/* Global styles */
+@use './brand-theme.css';
 
-:root {
+html:root {
   --lpx-theme-light-bg: url('assets/images/login/login-bg-img-light.svg');
   --lpx-theme-dim-bg: url('assets/images/login/login-bg-img-dim.svg');
   --lpx-theme-dark-bg: url('assets/images/login/login-bg-img-dark.svg');
 
-  --lpx-logo-icon: url('assets/images/logo/icon-lite.svg');
+  --lpx-logo-icon: url('/assets/images/logo/flowforge.svg');
   --lpx-logo-url: var(--lpx-logo-icon);
   --lpx-logo: var(--lpx-logo-icon);
 

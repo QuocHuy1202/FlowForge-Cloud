@@ -17,7 +17,7 @@ public class FlowForgeBrandingProvider : DefaultBrandingProvider
 
     public override string AppName => _localizer["AppName"];
 
-    public override string? LogoUrl => "~/images/logo/leptonxlite/logo-light-thumbnail.png";
+    public override string? LogoUrl => "~/images/logo/flowforge.svg";
 
-    public override string? LogoIconUrl => "~/images/logo/leptonxlite/logo-dark-thumbnail.png";
+    public override string? LogoIconUrl => "~/images/logo/flowforge.svg";
 }

@@ -1,7 +1,12 @@
-:root {
-    --lpx-logo-icon: url('images/logo/leptonxlite/logo-light-thumbnail.png');
+@import url('./brand-theme.css');
+
+html:root {
+    --lpx-logo-icon: url('/images/logo/flowforge.svg');
+    --lpx-logo: var(--lpx-logo-icon);
 }
-:root .abp-account-layout .lpx-brand-logo{
-    --lpx-logo: url('images/logo/leptonxlite/logo-dark-thumbnail.png');
-    background-position: left;
+
+body .abp-account-layout .lpx-brand-logo {
+    --lpx-logo: url('/images/logo/flowforge.svg');
+    background-position: center;
+    background-size: contain;
 }

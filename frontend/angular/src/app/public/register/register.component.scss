@@ -4,7 +4,7 @@
 
 .auth-page {
     min-height: 100vh;
-    background: #f1f6ff;
+    background: var(--ff-gradient);
     padding: 24px;
     font-family: Inter, "Segoe UI", sans-serif;
 }
@@ -23,8 +23,8 @@
 }
 
 .auth-brand {
-    background: linear-gradient(145deg, #2563eb, #123b9c);
-    color: white;
+    background: linear-gradient(145deg, #eefaff, #e0efff);
+    color: var(--ff-ink);
     padding: 45px;
     display: flex;
     flex-direction: column;
@@ -32,7 +32,7 @@
 }
 
 .brand {
-    color: white;
+    color: var(--ff-ink);
     display: flex;
     align-items: center;
     gap: 12px;
@@ -42,12 +42,10 @@
 }
 
 .brand-icon {
-    width: 43px;
-    height: 43px;
-    border-radius: 12px;
-    display: grid;
-    place-items: center;
-    background: rgba(255, 255, 255, .2);
+    width: 44px;
+    height: 44px;
+    flex: 0 0 44px;
+    object-fit: contain;
 }
 
 .brand-content {
@@ -58,14 +56,14 @@
     }
 
     p {
-        color: #dbeafe;
+        color: #475569;
         line-height: 1.8;
         max-width: 360px;
     }
 }
 
 .eyebrow {
-    color: #bfdbfe;
+    color: #2563eb;
     font-size: 12px;
     letter-spacing: 2px;
     font-weight: 700;
@@ -74,14 +72,14 @@
 .benefit {
     margin-top: 18px;
     padding: 12px 16px;
-    background: rgba(255, 255, 255, .1);
-    border: 1px solid rgba(255, 255, 255, .15);
+    background: rgba(255, 255, 255, .8);
+    border: 1px solid #bfdbfe;
     border-radius: 10px;
 }
 
 .brand-footer {
     font-size: 13px;
-    color: #bfdbfe;
+    color: #2563eb;
 }
 
 .auth-form-area {
@@ -184,7 +182,7 @@
     padding: 15px;
     border: none;
     border-radius: 10px;
-    background: #2563eb;
+    background: var(--ff-action-gradient);
     color: white;
     font-weight: 700;
     cursor: pointer;

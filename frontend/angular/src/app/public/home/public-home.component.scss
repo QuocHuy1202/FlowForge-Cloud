@@ -11,7 +11,7 @@
     --border: #e2e8f0;
 
     min-height: 100vh;
-    background: #fff;
+    background: var(--ff-gradient);
     color: var(--navy);
     font-family: Inter, "Segoe UI", Arial, sans-serif;
 }
@@ -37,14 +37,10 @@
 }
 
 .brand-icon {
-    width: 40px;
-    height: 40px;
-    display: grid;
-    place-items: center;
-    background: var(--blue);
-    color: white;
-    border-radius: 12px;
-    font-weight: 800;
+    width: 44px;
+    height: 44px;
+    flex: 0 0 44px;
+    object-fit: contain;
 }
 
 .brand-accent {
@@ -83,7 +79,7 @@
 }
 
 .btn-primary {
-    background: var(--blue);
+    background: var(--ff-action-gradient);
     color: #fff;
 
     &:hover {
