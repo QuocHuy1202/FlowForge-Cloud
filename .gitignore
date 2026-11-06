@@ -22,3 +22,8 @@ infrastructure/docker/.env
 **/Logs/**/*.crt
 **/.certs/
 **/logs.txt
+
+# CI and local test outputs
+/artifacts/
+**/TestResults/
+**/test-results/
