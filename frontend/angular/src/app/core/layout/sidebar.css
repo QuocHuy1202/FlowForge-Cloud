@@ -1,0 +1,159 @@
+/* The theme uses hover-trigger as its collapsed state. Keep the state and
+   replace its hover sizing with explicit widths controlled by the button. */
+@media (min-width: 768px) {
+  #lpx-wrapper.ff-sidebar {
+    --ff-sidebar-width: 264px;
+  }
+
+  #lpx-wrapper.ff-sidebar.hover-trigger {
+    --ff-sidebar-width: 80px;
+  }
+
+  #lpx-wrapper.ff-sidebar .lpx-sidebar-container,
+  #lpx-wrapper.ff-sidebar .lpx-sidebar-container:hover,
+  #lpx-wrapper.ff-sidebar.hover-trigger .lpx-sidebar-container:hover,
+  #lpx-wrapper.ff-sidebar.hover-trigger .lpx-sidebar-container:not(:hover),
+  #lpx-wrapper.ff-sidebar.hover-trigger .lpx-sidebar-container .lpx-sidebar .lpx-nav,
+  #lpx-wrapper.ff-sidebar .lpx-sidebar .lpx-nav {
+    width: var(--ff-sidebar-width);
+    min-width: var(--ff-sidebar-width);
+    max-width: var(--ff-sidebar-width);
+  }
+
+  #lpx-wrapper.ff-sidebar .lpx-sidebar {
+    margin-top: 88px;
+    height: calc(100dvh - 88px);
+    min-height: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  #lpx-wrapper.ff-sidebar .lpx-sidebar .lpx-nav {
+    height: auto;
+  }
+
+  #lpx-wrapper.ff-sidebar .lpx-sidebar.lpx-scroll-container .lpx-logo-container {
+    width: var(--ff-sidebar-width) !important;
+    height: 88px;
+    padding: 18px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid var(--ff-border, #dbe7f5);
+  }
+
+  #lpx-wrapper.ff-sidebar .lpx-logo-container lpx-brand-logo {
+    width: calc(100% - 34px);
+  }
+
+  #lpx-wrapper.ff-sidebar .lpx-sidebar .lpx-logo-container .menu-collapse-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    left: auto;
+    right: 14px;
+    top: 50%;
+    width: 30px;
+    height: 30px;
+    border-radius: 8px;
+    font-size: 22px;
+    color: var(--ff-muted, #64748b);
+    cursor: pointer;
+  }
+
+  #lpx-wrapper.ff-sidebar .lpx-logo-container .menu-collapse-icon:hover {
+    color: var(--ff-primary, #2563eb);
+    background: #eff6ff;
+  }
+
+  #lpx-wrapper.ff-sidebar .lpx-content-container,
+  #lpx-wrapper.ff-sidebar.hover-trigger .lpx-content-container {
+    margin-left: var(--ff-sidebar-width);
+    min-width: 0;
+  }
+
+  #lpx-wrapper.ff-sidebar .lpx-footbar-container,
+  #lpx-wrapper.ff-sidebar.hover-trigger .lpx-footbar-container {
+    left: var(--ff-sidebar-width);
+  }
+
+  #lpx-wrapper.ff-sidebar .lpx-sidebar .lpx-nav-menu {
+    width: 100%;
+    max-width: 100%;
+    padding: 16px 12px;
+  }
+
+  #lpx-wrapper.ff-sidebar .lpx-sidebar .lpx-menu-item-link {
+    height: 44px;
+    line-height: 44px;
+    padding: 0 10px;
+    margin: 3px 0;
+    border-radius: 10px;
+    gap: 8px;
+    font-size: 14px;
+  }
+
+  #lpx-wrapper.ff-sidebar .lpx-sidebar .lpx-menu-item-icon {
+    flex: 0 0 28px;
+  }
+
+  #lpx-wrapper.ff-sidebar .lpx-sidebar .lpx-menu-item-icon .lpx-icon {
+    width: 28px;
+    font-size: 17px;
+  }
+
+  #lpx-wrapper.ff-sidebar:not(.hover-trigger) .lpx-sidebar-container .hidden-in-hover-trigger {
+    display: block;
+  }
+
+  #lpx-wrapper.ff-sidebar:not(.hover-trigger) .lpx-inner-menu.collapsed {
+    display: none;
+  }
+
+  #lpx-wrapper.ff-sidebar .lpx-sidebar .lpx-inner-menu-item .lpx-menu-item-link {
+    padding-inline-start: 42px;
+  }
+
+  #lpx-wrapper.ff-sidebar.hover-trigger .lpx-sidebar-container .hidden-in-hover-trigger:not(.menu-collapse-icon),
+  #lpx-wrapper.ff-sidebar.hover-trigger .lpx-brand-name {
+    display: none;
+  }
+
+  #lpx-wrapper.ff-sidebar.hover-trigger .lpx-logo-container {
+    padding: 10px;
+  }
+
+  #lpx-wrapper.ff-sidebar.hover-trigger .lpx-logo-container lpx-brand-logo {
+    width: 100%;
+    align-self: center;
+  }
+
+  #lpx-wrapper.ff-sidebar.hover-trigger .lpx-brand-logo {
+    width: 38px;
+    margin: auto;
+  }
+
+  #lpx-wrapper.ff-sidebar.hover-trigger .lpx-sidebar .lpx-logo-container .menu-collapse-icon {
+    display: none;
+  }
+
+  #lpx-wrapper.ff-sidebar.hover-trigger .lpx-sidebar-container {
+    cursor: pointer;
+  }
+
+  #lpx-wrapper.ff-sidebar.hover-trigger .lpx-sidebar .lpx-menu-item-link {
+    justify-content: center;
+    padding: 0;
+    gap: 0;
+  }
+}
+
+@media (max-width: 767px) {
+  #lpx-wrapper.ff-sidebar .lpx-topbar-container {
+    display: none;
+  }
+
+  #lpx-wrapper.ff-sidebar .lpx-footbar-container {
+    position: static;
+    margin-top: 24px;
+  }
+}
